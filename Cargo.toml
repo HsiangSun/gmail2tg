@@ -1,0 +1,24 @@
+[package]
+name = "gmail2tg"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+imap = "3.0.0-alpha.14"
+native-tls = { version = "0.2", features = ["vendored"] }
+mailparse = "0.13"
+telegram-bot = "0.8.0"
+chrono = "0.4.38"
+tokio = { version = "0.2", features = ["full"] }
+scraper = "0.21.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+openssl-sys = "0.9.93"
+toml-env = "1.1.1"
+serde = { version = "1.0.215", features = ["derive"] }
+once_cell = "1.19.0"
+
+[features]
+# Force openssl-sys to staticly link in the openssl library. Necessary when
+# cross compiling to x86_64-unknown-linux-musl.
+vendored = ["openssl-sys/vendored"]
